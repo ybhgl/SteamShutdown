@@ -4,7 +4,7 @@ namespace SteamShutdown.Actions
 {
     public class Shutdown : Action
     {
-        public override string Name { get; protected set; } = "Shutdown";
+        public override string Name { get; protected set; } = "关机";
 
         public override void Execute()
         {
