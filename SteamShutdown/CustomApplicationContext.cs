@@ -70,11 +70,11 @@ namespace SteamShutdown
             }
             else
             {
-                AddToolStripItem(root, "No games downloading", enabled: false);
+                AddToolStripItem(root, "无正在下载任务", enabled: false);
             }
 
             root.Add(new ToolStripSeparator());
-            var modeNode = (ToolStripMenuItem)AddToolStripItem(root, "Actions");
+            var modeNode = (ToolStripMenuItem)AddToolStripItem(root, "动作");
 
             foreach (var mode in Actions.Action.GetAllActions)
             {
@@ -82,10 +82,10 @@ namespace SteamShutdown
             }
 
             root.Add(new ToolStripSeparator());
-            AddToolStripItem(root, "Complete all downloads", AllItem_Click, SteamShutdown.WaitForAll);
+            AddToolStripItem(root, "所有任务完成", AllItem_Click, SteamShutdown.WaitForAll);
 
             root.Add(new ToolStripSeparator());
-            AddToolStripItem(root, "Close", CloseItem_Click);
+            AddToolStripItem(root, "退出", CloseItem_Click);
         }
 
         private void CloseItem_Click(object sender, EventArgs e)
@@ -147,7 +147,7 @@ namespace SteamShutdown
             var timer = new System.Timers.Timer(30000.0);
             timer.AutoReset = false;
 
-            NotifyIcon.ShowBalloonTip(5000, "", $"The action \"{SteamShutdown.ActiveMode.Name}\" will be executed in 30 seconds.{Environment.NewLine}Quit to abort.", ToolTipIcon.Info);
+            NotifyIcon.ShowBalloonTip(5000, "", $"活动 \"{SteamShutdown.ActiveMode.Name}\" 将在30秒后执行，{Environment.NewLine}退出程序以终止", ToolTipIcon.Info);
 
             var modeToExecute = SteamShutdown.ActiveMode;
             timer.Elapsed += (o, e) => modeToExecute.Execute();
@@ -171,7 +171,7 @@ namespace SteamShutdown
             };
             NotifyIcon.MouseUp += NotifyIcon_MouseUp;
             NotifyIcon.ContextMenuStrip.Opening += ContextMenuStrip_Opening;
-            NotifyIcon.ShowBalloonTip(2000, "Hello", "You find me in the taskbar.", ToolTipIcon.Info);
+            NotifyIcon.ShowBalloonTip(2000, "哈喽", "你可以在任务栏找到我", ToolTipIcon.Info);
         }
 
         private void NotifyIcon_MouseUp(object sender, MouseEventArgs e)
