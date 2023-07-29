@@ -4,7 +4,7 @@ namespace SteamShutdown.Actions
 {
     public class Hibernation : Action
     {
-        public override string Name { get; protected set; } = "Hibernate";
+        public override string Name { get; protected set; } = "休眠";
 
         public override void Execute()
         {
